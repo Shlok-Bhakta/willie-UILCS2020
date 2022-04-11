@@ -15,21 +15,37 @@ public class App {
         for (int i = 0; i < 1; i++) {
             int Q_count = 0;
             int board_size = Integer.parseInt(scan.nextLine());
-            int[][] board = new int[board_size][board_size];
+            char[][] board = new char[board_size][board_size];
             scan.nextLine();
             for(int j = 0; j < board_size; j++) {
                 String scan_line = scan.nextLine();
                 for (int k = 0; k < scan_line.length(); k++) {
-                    if (scan_line.charAt(k) == '|') {
-                        if (scan_line.charAt(k + 2) == 'Q') {
-                            Q_count++;
-    
-                        } else {
-    
+                    int bars = 0;
+                    if(!(board_size < bars)){
+                        if (scan_line.charAt(k) == '|') {
+                            bars++;
+                            if (scan_line.charAt(k + 2) == 'Q') {
+                                Q_count++;
+                                board[j][k] = 'Q';
+                                k = k + 5;
+                                
+                            System.out.println("Q");
+                            } else {
+                                board[j][k] = ' ';
+                                System.out.println(" ");
+                                k = k + 5;
+                            }
                         }
+
                     }
-                    scan.nextLine();
-                }                
+                    
+                    
+                    
+                    
+                    
+                }     
+                System.out.println(Arrays.toString(board[j]));        
+                scan.nextLine();   
             }
             
 
