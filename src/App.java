@@ -1,6 +1,4 @@
-import java.util.Scanner;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.*;
 
 public class App {
@@ -8,49 +6,40 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(new File("willie.dat"));
-        
+
         int case_loop = Integer.parseInt(scan.nextLine());
-        
 
         for (int i = 0; i < 1; i++) {
             int Q_count = 0;
             int board_size = Integer.parseInt(scan.nextLine());
             char[][] board = new char[board_size][board_size];
+            // will skip the first line which is ------------------------------
             scan.nextLine();
-            for(int j = 0; j < board_size; j++) {
-                String scan_line = scan.nextLine();
-                int debug = scan_line.length();
-                for (int k = 0; k < scan_line.length(); k++) {
-                    int bars = 0;
-                    if(!(board_size < bars)){
-                        if (scan_line.charAt(k) == '|') {
-                            bars++;
-                            if (scan_line.charAt(k + 2) == 'Q') {
+
+            // figure out where queens are
+            // using a 2 dimentional array called board[][]
+            for (int j = 0; j < board_size; j++) {
+                String Line = scan.nextLine();
+                // check if a spot has a queen
+                for (int k = 1; k < board_size + 1; k++) {
+                    int position = 3;
+                    // if the queen is in the first collumn
+                    if (!(position > Line.length())) {
+
+                        if (k == 1) {
+                            if (Line.charAt(position) == ' ') {
                                 Q_count++;
-                                board[j][k] = 'Q';
-                                k = k + 5;
-                                
-                            System.out.println("Q");
-                            } else {
-                                board[j][k] = ' ';
-                                System.out.println(" ");
-                                k = k + 5;
+                                board[j][k - 1] = '_';
+
                             }
                         }
 
+                        position = position + 4;
                     }
-                    
-                    
-                    
-                    
-                    
-                }     
-                System.out.println(Arrays.toString(board[j]));        
-                scan.nextLine();   
+                }
+                // DEBUG line
+                System.out.println(Arrays.toString(board[j]));
             }
-            
-
-
 
         }
 
