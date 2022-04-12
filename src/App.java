@@ -19,6 +19,7 @@ public class App {
             scan.nextLine();
             for(int j = 0; j < board_size; j++) {
                 String scan_line = scan.nextLine();
+                int debug = scan_line.length();
                 for (int k = 0; k < scan_line.length(); k++) {
                     int bars = 0;
                     if(!(board_size < bars)){
