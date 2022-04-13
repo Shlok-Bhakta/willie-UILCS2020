@@ -9,7 +9,7 @@ public class App {
 
         int case_loop = Integer.parseInt(scan.nextLine());
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < case_loop; i++) {
             int Q_count = 0;
             int board_size = Integer.parseInt(scan.nextLine());
             char[][] board = new char[board_size][board_size];
@@ -21,51 +21,76 @@ public class App {
             for (int j = 0; j < board_size; j++) {
                 String Line = scan.nextLine();
                 // check if a spot has a queen
+                int position = 2;
                 for (int k = 1; k < board_size + 1; k++) {
-                    int position = 3;
+
                     // if the queen is in the first collumn
+                    int debug = Line.length();
                     if (!(position > Line.length())) {
 
                         if (k == 1) {
+                            // if it not a queen
                             if (Line.charAt(position) == ' ') {
-                                Q_count++;
+
                                 board[j][k - 1] = '_';
 
+                                // if it a queen
+                            } else {
+                                Q_count++;
+                                board[j][k - 1] = 'Q';
                             }
                         }
 
-                        position = position + 4;
+                        if (k > 1) {
+                            // if it not a queen
+                            if (Line.charAt(position) == ' ') {
+
+                                board[j][k - 1] = '_';
+
+                                // if it a queen
+                            } else {
+                                Q_count++;
+                                board[j][k - 1] = 'Q';
+                            }
+                        }
+
                     }
+                    position = position + 4;
+                    //System.out.println(board[j][k-1]);
                 }
                 // DEBUG line
                 System.out.println(Arrays.toString(board[j]));
+                scan.nextLine();
+            }
+            
+
+            if(boardValid(board_size, Q_count) == false){
+                System.out.println("incorrect attempt");
             }
 
+
+
+            scan.nextLine();
+        }
+    }
+    public static boolean boardValid(int board_size, int Q_count){
+        boolean bvalid = false;
+        if(board_size == Q_count){
+            bvalid = true;
         }
 
+
+        return bvalid;
+
+    }
+    public static boolean horizTest(char[][] board, int board_size){
+        boolean queenkill = false;
+
+
+
+        return queenkill;
     }
 
 }
 
-/*
- * public static int[][] board_to_matrix(ArrayList<String> board, int
- * board_size) {
- * int[][] matrix = new int[board_size][board_size];
- * int[] flat_matrix = new int[board_size * board_size];
- * 
- * for (int i = 0; i < (board_size / 2); i++) {
- * // TODO find the location of the Q and map it to the matrix
- * int board_row = i * 2;
- * for (int j = 0; j < board_size; j++) {
- * if (board.get((j * 3) + j) == "Q") {
- * System.out.println("debug");
- * }
- * 
- * }
- * 
- * }
- * 
- * return matrix;
- * 
- * }
- */
+
