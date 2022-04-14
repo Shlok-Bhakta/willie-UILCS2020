@@ -61,13 +61,17 @@ public class App {
                 // DEBUG line
                 System.out.println(Arrays.toString(board[j]));
                 scan.nextLine();
+                
             }
             
 
             if(boardValid(board_size, Q_count) == false){
                 System.out.println("incorrect attempt");
             }
-
+            if(horizTest(board, board_size) == false){
+                System.out.println("Incorrect attempt");
+                break;
+            }
 
 
             scan.nextLine();
@@ -85,6 +89,36 @@ public class App {
     }
     public static boolean horizTest(char[][] board, int board_size){
         boolean queenkill = false;
+        int loop = 0;
+
+        
+            for(int i = 0; i < board_size; i++){
+                for(int j = 0; j < board_size; j++){
+                    if(board[i][j] == 'Q'){
+                        for(int k = 0; k < board_size; k++){
+                            if(board[i][k] == 'Q'){
+                                if(!(k == j))
+                                queenkill = true;
+                                
+                            }
+
+
+
+                        }
+
+                    } 
+
+                }
+
+            }
+
+
+
+
+
+        
+
+
 
 
 
