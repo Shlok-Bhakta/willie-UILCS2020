@@ -21,30 +21,52 @@ public class App {
             for (int j = 0; j < board_size; j++) {
                 String Line = scan.nextLine();
                 // check if a spot has a queen
+                int position = 2;
                 for (int k = 1; k < board_size + 1; k++) {
-                    int position = 3;
+
                     // if the queen is in the first collumn
+                    int debug = Line.length();
                     if (!(position > Line.length())) {
 
                         if (k == 1) {
+                            // if it not a queen
                             if (Line.charAt(position) == ' ') {
-                                Q_count++;
+
                                 board[j][k - 1] = '_';
 
+                                // if it a queen
+                            } else {
+                                Q_count++;
+                                board[j][k - 1] = 'Q';
                             }
                         }
 
-                        position = position + 4;
+                        if (k > 1) {
+                            // if it not a queen
+                            if (Line.charAt(position) == ' ') {
+
+                                board[j][k - 1] = '_';
+
+                                // if it a queen
+                            } else {
+                                Q_count++;
+                                board[j][k - 1] = 'Q';
+                            }
+                        }
+
                     }
+                    position = position + 4;
                 }
                 // DEBUG line
                 System.out.println(Arrays.toString(board[j]));
+                scan.nextLine();
             }
 
+            scan.nextLine();
+            scan.nextLine();
+
         }
-
     }
-
 }
 
 /*
